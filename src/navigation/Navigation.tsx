@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import DrawerNavigation from './DrawerNavigation';
+import { useThemeContext, lightTheme, darkTheme } from '../Themes';
 
-export class Navigation extends Component {
-	render() {
-		return (
-			<NavigationContainer>
-				<DrawerNavigation />
-			</NavigationContainer>
-		);
-	}
-}
+const Navigation = () => {
+	const theme = useThemeContext();
+	return (
+		<NavigationContainer theme={theme.mode === 'dark' ? darkTheme : lightTheme}>
+			<DrawerNavigation />
+		</NavigationContainer>
+	);
+};
 
 export default Navigation;
