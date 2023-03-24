@@ -1,13 +1,35 @@
-import React from 'react';
+import { useDrawerStatus } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
+import React, { useEffect } from 'react';
+import { StatusBar, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 import Home from '../components/Screens/Home';
 import Setting from '../components/Screens/Setting';
-import { ViewStyle } from 'react-native';
+import { NoHeader, TitleHeader } from './screenConfigs';
 
 const Stack = createStackNavigator();
 
-const StackNavigation = ({ style }: { style: ViewStyle }) => {
+const defaultNavigationRoutes = {
+	HOME: 'Home',
+	SETTING: 'Setting',
+} as const;
+export type RootStackParamList = {
+	[defaultNavigationRoutes.HOME]: undefined;
+	[defaultNavigationRoutes.SETTING]: undefined;
+};
+export const navigationRoutes = {
+	...defaultNavigationRoutes,
+} as const;
+
+const StackNavigation = ({ style }: { style: ViewStyle }): React.ReactElement => {
+	const drawerStatus = useDrawerStatus();
+	useEffect(() => {
+		if (drawerStatus === 'open') {
+			StatusBar.setBarStyle('dark-content');
+		} else {
+			StatusBar.setBarStyle('light-content');
+		}
+	}, [drawerStatus]);
 	return (
 		<Animated.View style={{ ...style, backgroundColor: '#ccc', flex: 1, overflow: 'hidden' }}>
 			<Stack.Navigator
@@ -16,10 +38,14 @@ const StackNavigation = ({ style }: { style: ViewStyle }) => {
 					gestureEnabled: false,
 					headerShown: false,
 				}}
-				initialRouteName="Home"
+				initialRouteName={navigationRoutes.HOME}
 			>
-				<Stack.Screen name="Home" component={Home} />
-				<Stack.Screen name="Setting" component={Setting} />
+				<Stack.Screen name={navigationRoutes.HOME} component={Home} options={NoHeader} />
+				<Stack.Screen
+					name={navigationRoutes.SETTING}
+					component={Setting}
+					options={TitleHeader('Đào tạo')}
+				/>
 			</Stack.Navigator>
 		</Animated.View>
 	);

@@ -1,7 +1,13 @@
 import React from 'react';
-import Navigation from './src/navigation/Navigation';
+import LoadingPortal from 'src/components/base/LoadingPortal';
+import Navigation from 'src/navigation/Navigation';
 const App = () => {
-	return <Navigation />;
+	return (
+		<>
+			<Navigation />
+			<LoadingPortal />
+		</>
+	);
 };
 
 export default App;
