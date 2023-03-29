@@ -1,0 +1,25 @@
+const mapStateToProps = (state: any) => {
+  return {
+    loginResponse: state.authen.loginResponse,
+    captchaResponse: state.authen.captchaResponse,
+    token: state.configs.token,
+    userName: state.configs.userName,
+  };
+};
+
+export default connect(mapStateToProps)(memo(LoginComponent));
+
+
+orrr
+
+
+  const {
+    notifyKTDL,
+    notifyTNDT,
+    notifyDKDT,
+    notifySSDT,
+    notifyKTT,
+    notifyHDDT,
+  } = useSelector((state: RootStateOrAny) => state.thongbao);
+
+  using useSelector or mapStateToProps

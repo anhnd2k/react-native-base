@@ -13,6 +13,11 @@ const defaultNavigationRoutes = {
 	HOME: 'Home',
 	SETTING: 'Setting',
 } as const;
+
+// use with props navigation
+// type Props = StackScreenProps<RootStackParamList, "Home">;
+// tham khảo => https://reactnavigation.org/docs/typescript/
+
 export type RootStackParamList = {
 	[defaultNavigationRoutes.HOME]: undefined;
 	[defaultNavigationRoutes.SETTING]: undefined;
@@ -44,7 +49,7 @@ const StackNavigation = ({ style }: { style: ViewStyle }): React.ReactElement =>
 				<Stack.Screen
 					name={navigationRoutes.SETTING}
 					component={Setting}
-					options={TitleHeader('Đào tạo')}
+					options={TitleHeader('Training')}
 				/>
 			</Stack.Navigator>
 		</Animated.View>

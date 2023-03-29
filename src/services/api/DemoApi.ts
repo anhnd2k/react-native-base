@@ -3,12 +3,9 @@ import endpoints from './endpoints';
 
 export type ListCountry = {
 	username: string;
-	password: string;
 };
 export type ListCountryDTO = {
 	fullName: string;
-	name: string;
-	nationalCode: string;
 };
 
 export const prepaidSubcriberApi = {
