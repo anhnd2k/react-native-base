@@ -9,14 +9,19 @@ import {
 } from '@react-navigation/drawer';
 import Animated from 'react-native-reanimated';
 import StackNavigation from './StackNavigation';
+import { useTheme } from 'styled-components/native';
+import { useThemeContext } from '../Themes';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerContent = (props) => {
+	const theme = useTheme();
+	const themeContext = useThemeContext();
+
 	const [active, setActive] = useState('Home');
 	return (
 		<DrawerContentScrollView
-			styles={{ backgroundColor: 'red', flex: 1 }}
+			styles={{ backgroundColor: '#ccc', flex: 1 }}
 			showsVerticalScrollIndicator={false}
 			{...props}
 		>
@@ -45,23 +50,34 @@ const DrawerContent = (props) => {
 						return <Text style={{ color: focused ? '#fff' : '#000' }}>Setting</Text>;
 					}}
 				/>
+				<DrawerItem
+					onPress={() => {
+						themeContext.setMode(themeContext.mode === 'dark' ? 'light' : 'dark');
+					}}
+					activeTintColor="#fff"
+					focused={active === 'switch'}
+					label={({ focused }) => {
+						return <Text style={{ color: focused ? '#fff' : '#000' }}>Setting</Text>;
+					}}
+				/>
 			</View>
 		</DrawerContentScrollView>
 	);
 };
 
 const DrawerNavigation = () => {
+	const theme = useTheme();
 	return (
 		<Drawer.Navigator
 			screenOptions={{
 				headerShown: false,
 				// swipeEnabled: currentRouteName !== navigationRoutes.LOGIN,
 				drawerActiveBackgroundColor: 'transparent',
-				drawerActiveTintColor: 'red',
+				drawerActiveTintColor: theme.colors.black,
 				drawerInactiveTintColor: 'white',
 				drawerType: 'slide',
 				overlayColor: 'transparent',
-				drawerStyle: styles.drawerStyles,
+				drawerStyle: [styles.drawerStyles, { backgroundColor: theme.colors.boxBackground }],
 				sceneContainerStyle: styles.bgTransparent,
 			}}
 			useLegacyImplementation
@@ -103,7 +119,7 @@ const DrawerNavigation = () => {
 };
 
 const styles = StyleSheet.create({
-	drawerStyles: { flex: 1, width: '50%', backgroundColor: 'red' },
+	drawerStyles: { flex: 1, width: '50%' },
 	bgTransparent: {
 		backgroundColor: 'transparent',
 	},

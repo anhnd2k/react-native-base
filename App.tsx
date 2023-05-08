@@ -5,6 +5,7 @@ import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-e
 import { Alert, Appearance } from 'react-native';
 import { Provider } from 'react-redux';
 import { configureStore } from 'src/reduxStore';
+import ThemeManager from './src/Themes';
 
 const errorHandler = (e, isFatal) => {
 	if (isFatal) {
@@ -27,11 +28,12 @@ const App = () => {
 	return (
 		<>
 			<Provider store={_store}>
-				<Navigation />
+				<ThemeManager>
+					<Navigation />
+				</ThemeManager>
 			</Provider>
 			<LoadingPortal />
 		</>
 	);
 };
-
 export default App;
