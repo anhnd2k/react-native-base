@@ -6,6 +6,7 @@ import { Alert, Appearance } from 'react-native';
 import { Provider } from 'react-redux';
 import { configureStore } from 'src/reduxStore';
 import ThemeManager from './src/Themes';
+import NetworkStatus from 'src/components/common/NetworkStatus';
 
 const errorHandler = (e, isFatal) => {
 	if (isFatal) {
@@ -33,6 +34,7 @@ const App = () => {
 				</ThemeManager>
 			</Provider>
 			<LoadingPortal />
+			<NetworkStatus />
 		</>
 	);
 };
