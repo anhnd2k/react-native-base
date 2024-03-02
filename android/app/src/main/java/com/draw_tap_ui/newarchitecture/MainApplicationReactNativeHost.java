@@ -1,4 +1,4 @@
-package com.draw_tap_ui.newarchitecture;
+package com.queckqueck.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.draw_tap_ui.BuildConfig;
-import com.draw_tap_ui.newarchitecture.components.MainComponentsRegistry;
-import com.draw_tap_ui.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.queckqueck.BuildConfig;
+import com.queckqueck.newarchitecture.components.MainComponentsRegistry;
+import com.queckqueck.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

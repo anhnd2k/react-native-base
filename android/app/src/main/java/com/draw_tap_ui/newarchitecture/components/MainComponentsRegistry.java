@@ -1,4 +1,4 @@
-package com.draw_tap_ui.newarchitecture.components;
+package com.queckqueck.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;
