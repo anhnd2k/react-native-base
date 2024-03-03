@@ -8,7 +8,7 @@ const Light = {
 		white: '#ffffff',
 		black: '#000000',
 		primary: '#FFAC30',
-		secondary: '#F1F3F6',
+		secondary: '#E14161',
 		grey: '#9d9fa3',
 		success: '#38C2B7',
 		error: '#E14161',
@@ -18,5 +18,7 @@ const Light = {
 		boxBackground: '#F1F3F6',
 	},
 };
+
+export type LightType = typeof Light;
 
 export default Light;

@@ -19,4 +19,6 @@ const Dark = {
 	},
 };
 
+export type DarkType = typeof Dark;
+
 export default Dark;

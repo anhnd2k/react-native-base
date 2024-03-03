@@ -3,10 +3,13 @@ import { StatusBar } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
 import { Appearance, AppearanceProvider } from 'react-native-appearance';
 
-import lightTheme from './Light';
-import darkTheme from './Dark';
+import lightTheme, { LightType } from './Light';
+import darkTheme, { DarkType } from './Dark';
+import { Theme } from '@react-navigation/native';
 
 const defaultMode = Appearance.getColorScheme() || 'light';
+
+export type extendTheme = Theme & DarkType & LightType;
 
 const ThemeContext = createContext({
 	mode: defaultMode,

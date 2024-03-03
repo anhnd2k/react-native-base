@@ -10,7 +10,7 @@ import {
 import Animated from 'react-native-reanimated';
 import StackNavigation from './StackNavigation';
 import { useTheme } from 'styled-components/native';
-import { useThemeContext } from '../Themes';
+import { extendTheme, useThemeContext } from '../Themes';
 
 const Drawer = createDrawerNavigator();
 
@@ -66,18 +66,18 @@ const DrawerContent = (props) => {
 };
 
 const DrawerNavigation = () => {
-	const theme = useTheme();
+	const { colors }: extendTheme = useTheme();
 	return (
 		<Drawer.Navigator
 			screenOptions={{
 				headerShown: false,
 				// swipeEnabled: currentRouteName !== navigationRoutes.LOGIN,
 				drawerActiveBackgroundColor: 'transparent',
-				drawerActiveTintColor: theme.colors.black,
+				drawerActiveTintColor: colors.black,
 				drawerInactiveTintColor: 'white',
 				drawerType: 'slide',
 				overlayColor: 'transparent',
-				drawerStyle: [styles.drawerStyles, { backgroundColor: theme.colors.boxBackground }],
+				drawerStyle: [styles.drawerStyles, { backgroundColor: colors.secondary }],
 				sceneContainerStyle: styles.bgTransparent,
 			}}
 			useLegacyImplementation

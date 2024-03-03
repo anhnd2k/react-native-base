@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, SafeAreaView, View, Modal, Text, TouchableOpacity } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
-import Svgs from 'src/constants/Svgs';
 
 const NetworkStatus = (): React.ReactElement => {
 	const [connected, setConnected] = React.useState<boolean>(true);
